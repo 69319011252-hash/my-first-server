@@ -1,7 +1,7 @@
 // 1. เรียกใช้งาน Module ที่ชื่อว่า 'http' ซึ่งเป็นระบบพื้นฐานของ Node.js สำหรับทำเซิร์ฟเวอร์
 const http = require('http');
 
-// 2. กำหนดช่องทาง (Port) ที่เซิร์ฟเวอร์จะใช้สื่อสาร โดยให้ใช้ของที่ Cloud กำหนดมา (process.env.PORT) ถ้าไม่มีให้ใช้ 3000
+// 2. กำหนดช่องทาง (Port) ที่เซิร์ฟเวอร์จะใช้สื่อสาร โดยให้ใช้ของที่ Cloud กำหนดมาให้
 const port = process.env.PORT || 3000;
 
 // 3. สร้างเครื่องแม่ข่าย (Server) ที่คอยรับคำขอ (req) และตอบกลับ (res)
@@ -10,17 +10,17 @@ const server = http.createServer((req, res) => {
   // 3.1 ตั้งรหัสสถานะ 200 หมายถึง "ทำงานสำเร็จ (OK)"
   res.statusCode = 200;
 
-  // 3.2 บอกเบราว์เซอร์ของผู้ใช้ว่า สิ่งที่ส่งกลับไปคือไฟล์ข้อความแบบ HTML และรองรับภาษาไทย (utf-8)
+  // 3.2 บอกเบราว์เซอร์ของผู้ใช้ว่า สิ่งที่ส่งกลับไปคือไฟล์ข้อความแบบ HTML แล้ว
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  // HTML และ CSS สไตล์ธีมหลุมดำ (Black Hole)
+  // HTML และ CSS สไตล์ธีมฟ้าน้ำเงินสมัยใหม่
   const htmlContent = `
   <!DOCTYPE html>
   <html lang="th">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Hole Web Server</title>
+    <title>Navy Blue Web Server</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;500;700&display=swap');
       
@@ -31,8 +31,8 @@ const server = http.createServer((req, res) => {
       }
 
       body {
-        background-color: #020205;
-        color: #f0f0f5;
+        background: linear-gradient(135deg, #0a1929 0%, #132f4c 50%, #1a3a52 100%);
+        color: #e3f2fd;
         font-family: 'Anuphan', sans-serif;
         display: flex;
         justify-content: center;
@@ -42,23 +42,24 @@ const server = http.createServer((req, res) => {
         position: relative;
       }
 
-      /* พื้นหลังจำลองอวกาศและดวงดาว */
+      /* พื้นหลังจำลองอวกาศกับจุดแสงสีฟ้า */
       body::before {
         content: '';
         position: absolute;
         width: 100%;
         height: 100%;
         background-image: 
-          radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
-        background-size: 550px 550px, 350px 350px;
-        background-position: 0 0, 40px 60px;
-        opacity: 0.4;
+          radial-gradient(circle, #64b5f6 1px, transparent 1px),
+          radial-gradient(circle, #42a5f5 0.5px, transparent 0.5px);
+        background-size: 150px 150px, 250px 250px;
+        background-position: 0 0, 50px 50px;
+        opacity: 0.15;
         z-index: 1;
+        animation: moveStars 20s linear infinite;
       }
 
-      /* ตัวจำลองหลุมดำ */
-      .blackhole-container {
+      /* ก้อนโมฮกฟ้าสุดท้าง */
+      .sphere-container {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -68,82 +69,133 @@ const server = http.createServer((req, res) => {
         padding: 20px;
       }
 
-      .blackhole {
-        width: 180px;
-        height: 180px;
-        background: #000;
+      .sphere {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle at 30% 30%, #64b5f6, #2196f3, #1565c0);
         border-radius: 50%;
         position: relative;
         box-shadow: 
-          0 0 40px 10px #000, 
-          0 0 60px 20px #ff5e00, 
-          0 0 100px 30px #8b00ff;
-        margin-bottom: 40px;
-        animation: pull 4s ease-in-out infinite alternate;
+          0 0 50px 15px rgba(33, 150, 243, 0.3),
+          0 0 80px 25px rgba(21, 101, 192, 0.2),
+          inset -30px -30px 60px rgba(0, 0, 0, 0.4);
+        margin-bottom: 50px;
+        animation: float 6s ease-in-out infinite;
       }
 
-      /* วงแหวนล้อมรอบหลุมดำ (Accretion Disk) */
-      .blackhole::after {
+      /* วงแหวนล้อมรอบทรงกลม */
+      .sphere::before {
         content: '';
         position: absolute;
-        top: -15%;
-        left: -15%;
-        right: -15%;
-        bottom: -15%;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
         border-radius: 50%;
-        border: 4px double transparent;
-        background-image: linear-gradient(#000, #000), radial-gradient(circle at center, #ff8c00, #8b00ff, transparent);
-        background-origin: border-box;
-        background-clip: content-box, border-box;
-        animation: spin 15s linear infinite;
-        opacity: 0.8;
+        border: 3px solid;
+        border-image: linear-gradient(45deg, #42a5f5, #1e88e5, #1565c0) 1;
+        animation: spin 20s linear infinite;
+      }
+
+      /* เอฟเฟกต์ Glow */
+      .sphere::after {
+        content: '';
+        position: absolute;
+        top: -30%;
+        left: -30%;
+        right: -30%;
+        bottom: -30%;
+        background: radial-gradient(circle at 35% 35%, rgba(100, 181, 246, 0.5), transparent);
+        border-radius: 50%;
+        filter: blur(20px);
+        animation: pulse 4s ease-in-out infinite;
       }
 
       /* กล่องข้อความ */
       .card {
-        background: rgba(10, 10, 25, 0.75);
-        padding: 30px 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 94, 0, 0.2);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-        max-width: 600px;
+        background: rgba(13, 27, 42, 0.8);
+        padding: 45px 50px;
+        border-radius: 25px;
+        border: 2px solid rgba(66, 165, 245, 0.3);
+        backdrop-filter: blur(15px);
+        box-shadow: 
+          0 20px 60px rgba(13, 110, 253, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        max-width: 650px;
         transform: translateY(0);
-        transition: all 0.5s ease;
+        transition: all 0.6s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.1), transparent);
+        animation: shimmer 3s infinite;
+        z-index: -1;
       }
 
       .card:hover {
-        border-color: rgba(139, 0, 255, 0.4);
-        box-shadow: 0 20px 60px rgba(139, 0, 255, 0.15);
+        border-color: rgba(66, 165, 245, 0.6);
+        box-shadow: 
+          0 30px 80px rgba(33, 150, 243, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
       }
 
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
         font-weight: 700;
-        margin-bottom: 15px;
-        background: linear-gradient(45deg, #ff8c00, #e0aaff, #8b00ff);
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 50%, #1e88e5 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.5px;
       }
 
       p {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         font-weight: 300;
-        color: #b0b0c5;
-        line-height: 1.6;
+        color: #b3e5fc;
+        line-height: 1.8;
+        letter-spacing: 0.3px;
       }
 
       .status-tag {
         display: inline-block;
-        margin-top: 20px;
-        padding: 6px 16px;
-        background: rgba(0, 255, 136, 0.1);
-        border: 1px solid rgba(0, 255, 136, 0.3);
-        color: #00ff88;
+        margin-top: 25px;
+        padding: 10px 24px;
+        background: linear-gradient(135deg, rgba(66, 165, 245, 0.15), rgba(33, 150, 243, 0.1));
+        border: 1.5px solid rgba(66, 165, 245, 0.5);
+        color: #64b5f6;
         border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 0.4s ease;
+      }
+
+      .status-tag:hover {
+        background: linear-gradient(135deg, rgba(66, 165, 245, 0.25), rgba(33, 150, 243, 0.2));
+        box-shadow: 0 0 20px rgba(66, 165, 245, 0.4);
+        transform: scale(1.05);
+      }
+
+      .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #64b5f6;
+        border-radius: 50%;
+        margin-right: 8px;
+        animation: blink 2s infinite;
       }
 
       /* Animations */
@@ -153,25 +205,83 @@ const server = http.createServer((req, res) => {
         }
       }
 
-      @keyframes pull {
-        0% {
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.6;
           transform: scale(1);
-          box-shadow: 0 0 40px 10px #000, 0 0 60px 20px #ff5e00, 0 0 100px 30px #8b00ff;
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+      }
+
+      @keyframes moveStars {
+        0% {
+          background-position: 0 0, 50px 50px;
         }
         100% {
-          transform: scale(1.05);
-          box-shadow: 0 0 40px 10px #000, 0 0 80px 30px #ff8c00, 0 0 120px 45px #8b00ff;
+          background-position: 150px 150px, 200px 200px;
+        }
+      }
+
+      @keyframes blink {
+        0%, 49%, 100% {
+          opacity: 1;
+        }
+        50%, 99% {
+          opacity: 0.4;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .card {
+          padding: 30px 25px;
+          max-width: 90%;
+        }
+
+        .sphere {
+          width: 150px;
+          height: 150px;
+          margin-bottom: 30px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="blackhole-container">
-      <div class="blackhole"></div>
+    <div class="sphere-container">
+      <div class="sphere"></div>
       <div class="card">
         <h1>สวัสดีค่ะ! นี่คือ Web Server ของ<br>[นางสาวกชกร โถชัย 69319011252]</h1>
-        <p>เครื่องแม่ข่ายทำงานปกติบนระบบ Railway แล้วเรียบร้อย ยินดีต้อนรับเข้าสู่ขอบฟ้าเหตุการณ์ (Event Horizon) ครับผม!</p>
-        <span class="status-tag">● ENGINE ONLINE</span>
+        <p>เครื่องแม่ข่ายทำงานปกติบนระบบ Railway แล้วเรียบร้อย ยินดีต้อนรับเข้าสู่พื้นที่เซิร์ฟเวอร์ฟ้าน้ำเงิน 🚀</p>
+        <span class="status-tag"><span class="dot"></span>ENGINE ONLINE</span>
       </div>
     </div>
   </body>
