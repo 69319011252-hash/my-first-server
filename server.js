@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧡 Cute Orange Anime Server 🧡</title>
+    <title>🍊 Cute Orange Fruits Server 🍊</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
       
@@ -84,98 +84,15 @@ const server = http.createServer((req, res) => {
         max-width: 900px;
       }
 
-      /* ตัวละครอนิเมะน่ารัก */
+      /* ตัวละครส้ม */
       .anime-character {
         position: relative;
         width: 180px;
         height: 250px;
         margin-bottom: 40px;
-        filter: drop-shadow(0 0 30px rgba(255, 154, 86, 0.4));
-      }
-
-      /* หัวตัวละคร */
-      .character-head {
-        width: 120px;
-        height: 140px;
-        background: linear-gradient(135deg, #ffd699 0%, #ffcc7a 100%);
-        border-radius: 60% 60% 50% 50%;
-        position: relative;
-        margin: 0 auto 20px;
-        box-shadow: inset -10px -10px 20px rgba(255, 140, 50, 0.2);
-        animation: headBob 3s ease-in-out infinite;
-      }
-
-      /* ตาประกายน่ารัก */
-      .eye {
-        width: 30px;
-        height: 40px;
-        background: linear-gradient(135deg, #fff 0%, #fff 50%, #ffe6cc 100%);
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        position: absolute;
-        top: 40px;
-        animation: eyeShine 2.5s ease-in-out infinite;
-      }
-
-      .eye-left {
-        left: 25px;
-        animation: eyeShineLeft 2.5s ease-in-out infinite;
-      }
-
-      .eye-right {
-        right: 25px;
-        animation: eyeShineRight 2.5s ease-in-out infinite;
-      }
-
-      /* ม่านตา */
-      .eye::before {
-        content: '';
-        position: absolute;
-        width: 16px;
-        height: 20px;
-        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-        border-radius: 50%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: pupilSpin 4s linear infinite;
-      }
-
-      /* แสงประกายตา */
-      .eye::after {
-        content: '';
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: radial-gradient(circle at 30% 30%, #fff, transparent);
-        border-radius: 50%;
-        top: 25%;
-        left: 30%;
-        animation: shine 2s ease-in-out infinite;
-      }
-
-      /* ปากยิ้มน่ารัก */
-      .mouth {
-        width: 40px;
-        height: 20px;
-        background: #ff8866;
-        border-radius: 0 0 40px 40px;
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: mouthSmile 2s ease-in-out infinite;
-      }
-
-      /* ตัวอักษร */
-      .character-body {
-        width: 100px;
-        height: 80px;
-        background: linear-gradient(135deg, #ffb84d 0%, #ff9a56 100%);
-        border-radius: 20% 20% 50% 50%;
-        margin: 0 auto;
-        position: relative;
-        box-shadow: 0 10px 30px rgba(255, 154, 86, 0.3);
-        animation: bodyBounce 2s ease-in-out infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       /* วงแหวนอนุภาค */
@@ -203,6 +120,102 @@ const server = http.createServer((req, res) => {
         left: 50%;
         transform: translateX(-50%);
         box-shadow: 0 0 15px #ff9a56;
+      }
+
+      /* ส้มใหญ่ */
+      .orange-main {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle at 30% 30%, #ffca3a, #ff9a56 40%, #ff7a2e 100%);
+        border-radius: 48% 52% 45% 55% / 48% 45% 55% 52%;
+        box-shadow: 
+          0 15px 35px rgba(255, 154, 86, 0.4),
+          inset -10px -10px 20px rgba(0, 0, 0, 0.1),
+          inset 8px 8px 15px rgba(255, 255, 255, 0.3);
+        animation: orangeBounce 2.5s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 154, 86, 0.3));
+      }
+
+      /* ก้านส้ม */
+      .orange-stem {
+        position: absolute;
+        width: 8px;
+        height: 30px;
+        background: linear-gradient(135deg, #8B6914 0%, #A0821D 100%);
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%) rotateZ(-15deg);
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ใบส้ม */
+      .orange-leaf {
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        background: linear-gradient(135deg, #2d8e2d 0%, #4caf50 50%, #2d8e2d 100%);
+        top: -8px;
+        right: -20px;
+        border-radius: 50% 0 50% 0 / 0 50% 0 50%;
+        transform: rotateZ(25deg);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        animation: leafWave 3s ease-in-out infinite;
+      }
+
+      /* เงาส้ม */
+      .orange-shadow {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        background: radial-gradient(ellipse at center, rgba(255, 154, 86, 0.3) 0%, transparent 70%);
+        top: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+        filter: blur(8px);
+      }
+
+      /* ผลไม้ตกแต่ง */
+      .decoration-fruits {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .small-fruit {
+        position: absolute;
+        border-radius: 50%;
+        filter: drop-shadow(0 3px 8px rgba(255, 154, 86, 0.2));
+        animation: floatAround 6s ease-in-out infinite;
+      }
+
+      .fruit-1 {
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle at 30% 30%, #ffdb58, #ffa500, #ff8c00);
+        top: -20px;
+        left: 20px;
+        animation-delay: 0s;
+      }
+
+      .fruit-2 {
+        width: 35px;
+        height: 35px;
+        background: radial-gradient(circle at 30% 30%, #ffdb58, #ffa500, #ff8c00);
+        bottom: 30px;
+        right: -20px;
+        animation-delay: 1s;
+      }
+
+      .fruit-3 {
+        width: 30px;
+        height: 30px;
+        background: radial-gradient(circle at 30% 30%, #ffdb58, #ffa500, #ff8c00);
+        bottom: 50px;
+        left: -25px;
+        animation-delay: 2s;
       }
 
       /* การ์ดเนื้อหา */
@@ -344,14 +357,22 @@ const server = http.createServer((req, res) => {
         }
       }
 
-      @keyframes headBob {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
+      @keyframes orangeBounce {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-20px) scale(1.05); }
       }
 
-      @keyframes bodyBounce {
-        0%, 100% { transform: scaleY(1); }
-        50% { transform: scaleY(1.1); }
+      @keyframes leafWave {
+        0%, 100% { transform: rotateZ(25deg); }
+        50% { transform: rotateZ(40deg); }
+      }
+
+      @keyframes floatAround {
+        0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+        25% { opacity: 0.6; }
+        50% { transform: translate(30px, -30px) rotate(90deg); opacity: 0.8; }
+        75% { opacity: 0.6; }
+        100% { transform: translate(0, 0) rotate(360deg); opacity: 0.3; }
       }
 
       @keyframes spinRing {
@@ -384,31 +405,6 @@ const server = http.createServer((req, res) => {
         }
       }
 
-      @keyframes eyeShineLeft {
-        0%, 100% { box-shadow: inset 0 0 15px rgba(255, 154, 86, 0.5); }
-        50% { box-shadow: inset 0 0 25px rgba(255, 200, 102, 0.5); }
-      }
-
-      @keyframes eyeShineRight {
-        0%, 100% { box-shadow: inset 0 0 15px rgba(255, 200, 102, 0.5); }
-        50% { box-shadow: inset 0 0 25px rgba(255, 154, 86, 0.5); }
-      }
-
-      @keyframes pupilSpin {
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(360deg); }
-      }
-
-      @keyframes mouthSmile {
-        0%, 100% { transform: translateX(-50%) scaleY(1); }
-        50% { transform: translateX(-50%) scaleY(1.2); }
-      }
-
-      @keyframes shine {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(0.8); }
-      }
-
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
@@ -434,8 +430,8 @@ const server = http.createServer((req, res) => {
           margin-bottom: 30px;
         }
 
-        .character-head {
-          width: 90px;
+        .orange-main {
+          width: 110px;
           height: 110px;
         }
       }
@@ -445,19 +441,23 @@ const server = http.createServer((req, res) => {
     <div class="anime-container">
       <div class="anime-character">
         <div class="particle-ring"></div>
-        <div class="character-head">
-          <div class="eye eye-left"></div>
-          <div class="eye eye-right"></div>
-          <div class="mouth"></div>
+        <div class="orange-main">
+          <div class="orange-stem"></div>
+          <div class="orange-leaf"></div>
         </div>
-        <div class="character-body"></div>
+        <div class="orange-shadow"></div>
+        <div class="decoration-fruits">
+          <div class="small-fruit fruit-1"></div>
+          <div class="small-fruit fruit-2"></div>
+          <div class="small-fruit fruit-3"></div>
+        </div>
       </div>
       <div class="card">
-        <h1>🧡 CUTE ORANGE ANIME SERVER 🧡</h1>
+        <h1>🍊 CUTE ORANGE FRUITS SERVER 🍊</h1>
         <h2>นางสาวกชกร โถชัย | 69319011252</h2>
-        <p>🎨 ยินดีต้อนรับสู่เซิร์ฟเวอร์อนิเมะสีส้นน่ารักสดใสเฟี่ยว ๆ!</p>
+        <p>🎨 ยินดีต้อนรับสู่เซิร์ฟเวอร์ผลไม้สีส้นน่ารักสดใสเฟี่ยว ๆ!</p>
         <p>✨ เครื่องแม่ข่ายทำงานบนระบบ Railway พร้อมเสิร์ฟความน่ารักสีส้นไปยังคุณ!</p>
-        <p>🚀 ระบบเปิดทำงานเต็มพลังพร้อมเอฟเฟกต์อนิเมชันน่ารักสดใส!</p>
+        <p>🚀 ระบบเปิดทำงานเต็มพลังพร้อมเอฟเฟกต์อนิเมชันผลไม้สดใส!</p>
         <span class="status-tag"><span class="dot"></span>SYSTEM ONLINE</span>
       </div>
     </div>
@@ -471,5 +471,5 @@ const server = http.createServer((req, res) => {
 
 // 4. สั่งให้เซิร์ฟเวอร์เริ่มต้นเปิดรับฟังการเชื่อมต่อตาม Port ที่กำหนดไว้
 server.listen(port, () => {
-  console.log(`🧡 Cute Orange Anime Server is running! เซิร์ฟเวอร์อนิเมะสีส้นเปิดทำงานแล้วที่ช่องทาง: ${port}`);
+  console.log(`🍊 Cute Orange Fruits Server is running! เซิร์ฟเวอร์ผลไม้สีส้นเปิดทำงานแล้วที่ช่องทาง: ${port}`);
 });
