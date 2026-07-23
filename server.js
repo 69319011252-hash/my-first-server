@@ -10,17 +10,17 @@ const server = http.createServer((req, res) => {
   // 3.1 ตั้งรหัสสถานะ 200 หมายถึง "ทำงานสำเร็จ (OK)"
   res.statusCode = 200;
 
-  // 3.2 บอกเบราว์เซอร์ของผู้ใช้ว่า สิ่งที่ส่งกลับไปคือไฟล์ข้อความแบบ HTML แลัฟระบบ
+  // 3.2 บอกเบราว์เซอร์ของผู้ใช้ว่า สิ่งที่ส่งกลับไปคือไฟล์ข้อความแบบ HTML
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  // HTML และ CSS สไตล์ธีมอนิเมะสุดเท่
+  // HTML และ CSS สไตล์ธีมส้มน่ารักสดใส
   const htmlContent = `
   <!DOCTYPE html>
   <html lang="th">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Anime Web Server ⚡</title>
+    <title>🧡 Cute Orange Anime Server 🧡</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
       
@@ -31,8 +31,8 @@ const server = http.createServer((req, res) => {
       }
 
       body {
-        background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-        color: #fff;
+        background: linear-gradient(135deg, #fff5f0 0%, #ffe4cc 50%, #ffd9b3 100%);
+        color: #5a3a2a;
         font-family: 'Noto Sans JP', sans-serif;
         display: flex;
         justify-content: center;
@@ -42,32 +42,32 @@ const server = http.createServer((req, res) => {
         position: relative;
       }
 
-      /* พื้นหลังอนิเมะกับสตาร์ไอเฟคต์ */
+      /* พื้นหลังสีส้มน่ารัก */
       body::before {
         content: '';
         position: absolute;
         width: 100%;
         height: 100%;
         background-image: 
-          radial-gradient(circle, #ff006e 1px, transparent 1px),
-          radial-gradient(circle, #00f5ff 0.5px, transparent 0.5px),
-          radial-gradient(circle, #ffbe0b 0.7px, transparent 0.7px);
+          radial-gradient(circle, #ff9a56 1px, transparent 1px),
+          radial-gradient(circle, #ffb84d 0.5px, transparent 0.5px),
+          radial-gradient(circle, #ffc266 0.7px, transparent 0.7px);
         background-size: 200px 200px, 300px 300px, 250px 250px;
         background-position: 0 0, 100px 100px, 50px 75px;
-        opacity: 0.1;
+        opacity: 0.15;
         z-index: 1;
         animation: moveStars 30s linear infinite;
       }
 
-      /* พื้นหลังอนิเมชันลวกพลาสมา */
+      /* พื้นหลังอนิเมชันส้มนุ่ม */
       body::after {
         content: '';
         position: absolute;
         width: 100%;
         height: 100%;
         background: 
-          radial-gradient(ellipse at 20% 50%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 50%, rgba(0, 245, 255, 0.15) 0%, transparent 50%);
+          radial-gradient(ellipse at 20% 50%, rgba(255, 154, 86, 0.2) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 50%, rgba(255, 200, 102, 0.2) 0%, transparent 50%);
         z-index: 0;
         animation: plasmaShift 8s ease-in-out infinite;
       }
@@ -84,32 +84,32 @@ const server = http.createServer((req, res) => {
         max-width: 900px;
       }
 
-      /* ตัวละครอนิเมะโหลพ้อย */
+      /* ตัวละครอนิเมะน่ารัก */
       .anime-character {
         position: relative;
         width: 180px;
         height: 250px;
         margin-bottom: 40px;
-        filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.5));
+        filter: drop-shadow(0 0 30px rgba(255, 154, 86, 0.4));
       }
 
       /* หัวตัวละคร */
       .character-head {
         width: 120px;
         height: 140px;
-        background: linear-gradient(135deg, #fdbcb4 0%, #f8a69e 100%);
+        background: linear-gradient(135deg, #ffd699 0%, #ffcc7a 100%);
         border-radius: 60% 60% 50% 50%;
         position: relative;
         margin: 0 auto 20px;
-        box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: inset -10px -10px 20px rgba(255, 140, 50, 0.2);
         animation: headBob 3s ease-in-out infinite;
       }
 
-      /* ตาประกายวาบ */
+      /* ตาประกายน่ารัก */
       .eye {
         width: 30px;
         height: 40px;
-        background: linear-gradient(135deg, #fff 0%, #00f5ff 50%, #fff 100%);
+        background: linear-gradient(135deg, #fff 0%, #fff 50%, #ffe6cc 100%);
         border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         position: absolute;
         top: 40px;
@@ -132,7 +132,7 @@ const server = http.createServer((req, res) => {
         position: absolute;
         width: 16px;
         height: 20px;
-        background: #000;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
         border-radius: 50%;
         top: 50%;
         left: 50%;
@@ -140,7 +140,7 @@ const server = http.createServer((req, res) => {
         animation: pupilSpin 4s linear infinite;
       }
 
-      /* แสงประกาย */
+      /* แสงประกายตา */
       .eye::after {
         content: '';
         position: absolute;
@@ -153,11 +153,11 @@ const server = http.createServer((req, res) => {
         animation: shine 2s ease-in-out infinite;
       }
 
-      /* ปากยิ้ม */
+      /* ปากยิ้มน่ารัก */
       .mouth {
         width: 40px;
         height: 20px;
-        background: #ff006e;
+        background: #ff8866;
         border-radius: 0 0 40px 40px;
         position: absolute;
         bottom: 20px;
@@ -170,11 +170,11 @@ const server = http.createServer((req, res) => {
       .character-body {
         width: 100px;
         height: 80px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #ffb84d 0%, #ff9a56 100%);
         border-radius: 20% 20% 50% 50%;
         margin: 0 auto;
         position: relative;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 10px 30px rgba(255, 154, 86, 0.3);
         animation: bodyBounce 2s ease-in-out infinite;
       }
 
@@ -187,7 +187,7 @@ const server = http.createServer((req, res) => {
         left: 50%;
         transform: translate(-50%, -50%);
         border: 2px solid transparent;
-        border-image: linear-gradient(45deg, #ff006e, #00f5ff, #ffbe0b, #ff006e) 1;
+        border-image: linear-gradient(45deg, #ff9a56, #ffc266, #ffb84d, #ff9a56) 1;
         border-radius: 50%;
         animation: spinRing 4s linear infinite;
       }
@@ -197,32 +197,32 @@ const server = http.createServer((req, res) => {
         position: absolute;
         width: 8px;
         height: 8px;
-        background: #ff006e;
+        background: #ff9a56;
         border-radius: 50%;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        box-shadow: 0 0 15px #ff006e;
+        box-shadow: 0 0 15px #ff9a56;
       }
 
       /* การ์ดเนื้อหา */
       .card {
-        background: rgba(20, 12, 50, 0.8);
+        background: rgba(255, 248, 240, 0.85);
         padding: 50px 60px;
         border-radius: 30px;
         border: 3px solid;
-        border-image: linear-gradient(135deg, #ff006e, #00f5ff) 1;
+        border-image: linear-gradient(135deg, #ff9a56, #ffcc7a) 1;
         backdrop-filter: blur(20px);
         box-shadow: 
-          0 0 40px rgba(255, 0, 110, 0.3),
-          0 0 80px rgba(0, 245, 255, 0.2),
-          inset 0 0 30px rgba(255, 0, 110, 0.05);
+          0 0 40px rgba(255, 154, 86, 0.25),
+          0 0 80px rgba(255, 200, 102, 0.15),
+          inset 0 0 30px rgba(255, 154, 86, 0.05);
         max-width: 700px;
         position: relative;
         overflow: hidden;
       }
 
-      /* เอฟเฟกต์ shimmer ไล่สีอนิเมะ */
+      /* เอฟเฟกต์ shimmer สีส้น */
       .card::before {
         content: '';
         position: absolute;
@@ -232,19 +232,19 @@ const server = http.createServer((req, res) => {
         height: 200%;
         background: linear-gradient(45deg, 
           transparent 0%, 
-          rgba(255, 0, 110, 0.1) 25%, 
-          rgba(0, 245, 255, 0.1) 50%, 
+          rgba(255, 154, 86, 0.1) 25%, 
+          rgba(255, 200, 102, 0.1) 50%, 
           transparent 100%);
         animation: shimmerRotate 3s infinite;
         z-index: -1;
       }
 
       .card:hover {
-        border-image: linear-gradient(135deg, #ffbe0b, #ff006e, #00f5ff) 1;
+        border-image: linear-gradient(135deg, #ff8866, #ffb84d, #ffc266) 1;
         box-shadow: 
-          0 0 60px rgba(255, 0, 110, 0.5),
-          0 0 100px rgba(0, 245, 255, 0.3),
-          inset 0 0 40px rgba(255, 0, 110, 0.1);
+          0 0 60px rgba(255, 154, 86, 0.4),
+          0 0 100px rgba(255, 200, 102, 0.2),
+          inset 0 0 40px rgba(255, 154, 86, 0.1);
         transform: translateY(-10px) scale(1.02);
       }
 
@@ -252,18 +252,18 @@ const server = http.createServer((req, res) => {
         font-size: 2.5rem;
         font-weight: 900;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #ff006e 0%, #00f5ff 50%, #ffbe0b 100%);
+        background: linear-gradient(135deg, #ff8866 0%, #ffb84d 50%, #ffc266 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         letter-spacing: 2px;
-        text-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        text-shadow: 0 0 20px rgba(255, 154, 86, 0.3);
         animation: titleGlow 2s ease-in-out infinite;
       }
 
       h2 {
         font-size: 1.5rem;
-        background: linear-gradient(135deg, #00f5ff 0%, #ffbe0b 100%);
+        background: linear-gradient(135deg, #ff9a56 0%, #ffcc7a 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -274,7 +274,7 @@ const server = http.createServer((req, res) => {
       p {
         font-size: 1.1rem;
         font-weight: 400;
-        color: #e0e0ff;
+        color: #8b5a2b;
         line-height: 1.8;
         letter-spacing: 0.5px;
         margin-bottom: 15px;
@@ -285,23 +285,23 @@ const server = http.createServer((req, res) => {
         display: inline-block;
         margin-top: 30px;
         padding: 12px 32px;
-        background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 245, 255, 0.2));
+        background: linear-gradient(135deg, rgba(255, 154, 86, 0.2), rgba(255, 200, 102, 0.2));
         border: 2px solid;
-        border-image: linear-gradient(135deg, #ff006e, #00f5ff) 1;
-        color: #00f5ff;
+        border-image: linear-gradient(135deg, #ff9a56, #ffcc7a) 1;
+        color: #ff8866;
         border-radius: 50px;
         font-size: 0.95rem;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
         transition: all 0.4s ease;
-        box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+        box-shadow: 0 0 20px rgba(255, 154, 86, 0.3);
         animation: statusPulse 2s ease-in-out infinite;
       }
 
       .status-tag:hover {
-        background: linear-gradient(135deg, rgba(255, 0, 110, 0.4), rgba(0, 245, 255, 0.4));
-        box-shadow: 0 0 40px rgba(0, 245, 255, 0.6);
+        background: linear-gradient(135deg, rgba(255, 154, 86, 0.4), rgba(255, 200, 102, 0.4));
+        box-shadow: 0 0 40px rgba(255, 154, 86, 0.6);
         transform: scale(1.1);
       }
 
@@ -309,11 +309,11 @@ const server = http.createServer((req, res) => {
         display: inline-block;
         width: 10px;
         height: 10px;
-        background: #00f5ff;
+        background: #ff9a56;
         border-radius: 50%;
         margin-right: 10px;
         animation: dotPulse 1.5s ease-in-out infinite;
-        box-shadow: 0 0 10px #00f5ff;
+        box-shadow: 0 0 10px #ff9a56;
       }
 
       /* Animations */
@@ -329,18 +329,18 @@ const server = http.createServer((req, res) => {
       @keyframes plasmaShift {
         0% {
           background: 
-            radial-gradient(ellipse at 20% 50%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 50%, rgba(0, 245, 255, 0.15) 0%, transparent 50%);
+            radial-gradient(ellipse at 20% 50%, rgba(255, 154, 86, 0.2) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 50%, rgba(255, 200, 102, 0.2) 0%, transparent 50%);
         }
         50% {
           background: 
-            radial-gradient(ellipse at 50% 20%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 50% 80%, rgba(255, 0, 110, 0.15) 0%, transparent 50%);
+            radial-gradient(ellipse at 50% 20%, rgba(255, 200, 102, 0.2) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 80%, rgba(255, 154, 86, 0.2) 0%, transparent 50%);
         }
         100% {
           background: 
-            radial-gradient(ellipse at 80% 50%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 20% 50%, rgba(0, 245, 255, 0.15) 0%, transparent 50%);
+            radial-gradient(ellipse at 80% 50%, rgba(255, 154, 86, 0.2) 0%, transparent 50%),
+            radial-gradient(ellipse at 20% 50%, rgba(255, 200, 102, 0.2) 0%, transparent 50%);
         }
       }
 
@@ -364,34 +364,34 @@ const server = http.createServer((req, res) => {
       }
 
       @keyframes titleGlow {
-        0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 110, 0.5); }
-        50% { text-shadow: 0 0 40px rgba(0, 245, 255, 0.8); }
+        0%, 100% { text-shadow: 0 0 20px rgba(255, 154, 86, 0.3); }
+        50% { text-shadow: 0 0 40px rgba(255, 154, 86, 0.6); }
       }
 
       @keyframes statusPulse {
-        0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 255, 0.3); }
-        50% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.8); }
+        0%, 100% { box-shadow: 0 0 20px rgba(255, 154, 86, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(255, 154, 86, 0.6); }
       }
 
       @keyframes dotPulse {
         0%, 100% { 
           transform: scale(1);
-          box-shadow: 0 0 10px #00f5ff;
+          box-shadow: 0 0 10px #ff9a56;
         }
         50% { 
           transform: scale(1.3);
-          box-shadow: 0 0 20px #00f5ff;
+          box-shadow: 0 0 20px #ff9a56;
         }
       }
 
       @keyframes eyeShineLeft {
-        0%, 100% { box-shadow: inset 0 0 15px rgba(0, 245, 255, 0.5); }
-        50% { box-shadow: inset 0 0 25px rgba(255, 0, 110, 0.5); }
+        0%, 100% { box-shadow: inset 0 0 15px rgba(255, 154, 86, 0.5); }
+        50% { box-shadow: inset 0 0 25px rgba(255, 200, 102, 0.5); }
       }
 
       @keyframes eyeShineRight {
-        0%, 100% { box-shadow: inset 0 0 15px rgba(255, 0, 110, 0.5); }
-        50% { box-shadow: inset 0 0 25px rgba(0, 245, 255, 0.5); }
+        0%, 100% { box-shadow: inset 0 0 15px rgba(255, 200, 102, 0.5); }
+        50% { box-shadow: inset 0 0 25px rgba(255, 154, 86, 0.5); }
       }
 
       @keyframes pupilSpin {
@@ -453,11 +453,11 @@ const server = http.createServer((req, res) => {
         <div class="character-body"></div>
       </div>
       <div class="card">
-        <h1>⚡ ANIME SERVER ⚡</h1>
+        <h1>🧡 CUTE ORANGE ANIME SERVER 🧡</h1>
         <h2>นางสาวกชกร โถชัย | 69319011252</h2>
-        <p>🎨 ยินดีต้อนรับสู่เซิร์ฟเวอร์อนิเมะสุดเท่ ๆ เฟี่ยว ๆ!</p>
-        <p>✨ เครื่องแม่ข่ายทำงานบนระบบ Railway พร้อมเสิร์ฟความสดชื่นอนิเมะไปยังคุณ</p>
-        <p>🚀 ระบบเปิดทำงานเต็มพลังพร้อมเอฟเฟกต์อนิเมชันจริงใจ!</p>
+        <p>🎨 ยินดีต้อนรับสู่เซิร์ฟเวอร์อนิเมะสีส้นน่ารักสดใสเฟี่ยว ๆ!</p>
+        <p>✨ เครื่องแม่ข่ายทำงานบนระบบ Railway พร้อมเสิร์ฟความน่ารักสีส้นไปยังคุณ!</p>
+        <p>🚀 ระบบเปิดทำงานเต็มพลังพร้อมเอฟเฟกต์อนิเมชันน่ารักสดใส!</p>
         <span class="status-tag"><span class="dot"></span>SYSTEM ONLINE</span>
       </div>
     </div>
@@ -471,5 +471,5 @@ const server = http.createServer((req, res) => {
 
 // 4. สั่งให้เซิร์ฟเวอร์เริ่มต้นเปิดรับฟังการเชื่อมต่อตาม Port ที่กำหนดไว้
 server.listen(port, () => {
-  console.log(`✨ Anime Server is running! เซิร์ฟเวอร์อนิเมะเปิดทำงานแล้วที่ช่องทาง: ${port}`);
+  console.log(`🧡 Cute Orange Anime Server is running! เซิร์ฟเวอร์อนิเมะสีส้นเปิดทำงานแล้วที่ช่องทาง: ${port}`);
 });
